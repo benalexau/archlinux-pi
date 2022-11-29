@@ -33,3 +33,4 @@ sudo dd if=archlinux-pi-rp4.img of=/dev/sdd bs=4M && sync
 
 Put the SD card in a Raspberry Pi and boot it. The system will obtain a DHCP
 address, after which you can SSH in as the created user.
+
