@@ -1,5 +1,8 @@
 #!/bin/bash
 
+mv boot/* boot-tmp/
+mount --bind boot-tmp boot
+
 #### RESIZE ROOT FILE SYSTEM ####
 
 cat <<EOM >>/etc/systemd/system/resizerootfs.service
@@ -92,3 +95,5 @@ mv /etc/resolv.conf.orig /etc/resolv.conf
 
 # Recover space
 rm /var/cache/pacman/pkg/*.xz
+
+umount boot
