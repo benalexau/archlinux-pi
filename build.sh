@@ -87,11 +87,16 @@ sed -i 's/-account   \[success=1 default=ignore\]  pam_systemd_home.so/# -accoun
 
 systemctl enable sshd.service
 
+#### REFLECT PREDICTABLE NETWORK INTERFACE ####
+
+mv -v /etc/systemd/network/eth0.network /etc/systemd/network/end0.network
+sed -i 's/eth0/end0/g' /etc/systemd/network/end0.network
+
 #### CLEAN UP ####
 
 # Restore original resolver
-rm /etc/resolv.conf
-mv /etc/resolv.conf.orig /etc/resolv.conf
+rm -v /etc/resolv.conf
+mv -v /etc/resolv.conf.orig /etc/resolv.conf
 
 # Recover space
 rm /var/cache/pacman/pkg/*.xz
